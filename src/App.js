@@ -6,6 +6,7 @@ function App() {
     name: "",
     email: "",
     password: "",
+    phone: ""
   });
 
   useEffect(() => {
@@ -33,10 +34,17 @@ function App() {
           onChange={handleChange}
         />
         <input
-          type="password"
+          type="number"
           name="password"
           value={value.password}
           placeholder="Password"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="phone"
+          value={value.phone}
+          placeholder="Phone"
           onChange={handleChange}
         />
       </form>
