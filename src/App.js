@@ -1,23 +1,21 @@
 import { useForm } from "./useForm";
-import { useEffect } from "react";
+import { useState } from "react";
+import Text from "./Text";
 
 function App() {
   const [value, handleChange] = useForm({
     name: "",
     email: "",
     password: "",
-    phone: ""
+    phone: "",
   });
 
-  useEffect(() => {
-    console.log("Running");
-    return () => {
-      console.log("Unmount");
-    };
-  }, [value.name]);
+  const [showText, setShowText] = useState(true);
 
   return (
     <div>
+      {showText ? <Text /> : null}
+      <button onClick={() => setShowText(!showText)}>Toggel</button>
       <form action="">
         <input
           type="text"
