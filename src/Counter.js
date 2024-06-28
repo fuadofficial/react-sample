@@ -1,14 +1,13 @@
-import React, { useState, memo } from "react";
+import React, { memo, useRef } from "react";
 
-function Counter() {
-  const [counter, setCounter] = useState(0);
+function Counter({ increment, decrement }) {
+  const ref = useRef(0);
+  console.log(ref.current++);
 
-  console.log("counter page");
   return (
     <div>
-      <h3>{counter}</h3>
-      <button onClick={() => setCounter(counter + 1)}>Increment</button>
-      <button onClick={() => setCounter(counter - 1)}>Decrement</button>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 }

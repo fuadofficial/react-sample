@@ -1,17 +1,21 @@
-import { useRef } from "react";
 import Counter from "./Counter";
+import React, { useCallback, useState } from "react";
 
 function App() {
-  console.log("main page");
-  const inputRef = useRef();
-  const accessRef = () => {
-    console.log(inputRef);
-  };
+  const [counter, setCounter] = useState(0);
+
+  const increment = useCallback(() => {
+    setCounter((currentCounter) => currentCounter + 1);
+  }, [setCounter]);
+
+  const decrement = useCallback(() => {
+    setCounter((currentCounter) => currentCounter - 1);
+  },[setCounter]);
+
   return (
     <div>
-      <Counter />
-      <input type="text" ref={inputRef} />
-      <button onClick={accessRef}>Ref</button>
+      <h1>{counter}</h1>
+      <Counter decrement={decrement} increment={increment} />
     </div>
   );
 }
